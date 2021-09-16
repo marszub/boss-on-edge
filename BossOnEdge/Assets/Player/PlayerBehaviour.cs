@@ -11,8 +11,11 @@ namespace Assets.Player
         [SerializeField] private float jumpHeight;
         [SerializeField] private float jumpSpeed;
         [SerializeField] private float jumpForce;
+        [SerializeField] private float smallVelocity;
 
         private new Rigidbody2D rigidbody;
+        private Animator animator;
+        private SpriteRenderer sprite;
 
         private float lastGroundTime;
         private List<GameObject> collidingGround;
@@ -21,16 +24,18 @@ namespace Assets.Player
         private void Start()
         {
             rigidbody = GetComponent<Rigidbody2D>();
+            animator = GetComponent<Animator>();
+            sprite = GetComponent<SpriteRenderer>();
             collidingGround = new List<GameObject>();
         }
 
         private void Update()
         {
             if (Input.GetButtonDown("Jump"))
-                Jump();
+                PrepareJump();
 
-            if (Input.GetButtonUp("Jump"))
-                StopJump();
+            if (rigidbody.velocity.y < -smallVelocity)
+                animator.SetBool("Up", false);
 
             Move(Input.GetAxis("Horizontal"));
         }
@@ -41,6 +46,8 @@ namespace Assets.Player
             {
                 collidingGround.Add(collision.gameObject);
                 duringJump = false;
+                animator.SetBool("MidAir", false);
+                animator.SetBool("Up", false);
             }
         }
 
@@ -49,6 +56,11 @@ namespace Assets.Player
             if (collision.gameObject.tag == "Ground")
             {
                 collidingGround.Remove(collision.gameObject);
+                if (collidingGround.Count == 0)
+                {
+                    duringJump = true;
+                    animator.SetBool("MidAir", true);
+                }
             }
         }
 
@@ -64,26 +76,30 @@ namespace Assets.Player
 
         private void Move(float direction)
         {
-            if (duringJump && Time.time - lastGroundTime > jumpHeight / jumpSpeed)
-                StopJump();
+            float V = speed * direction;
+            rigidbody.velocity = new Vector2(V, rigidbody.velocity.y);
 
-            rigidbody.velocity = new Vector2(speed * direction, rigidbody.velocity.y);
+            if (V < -smallVelocity)
+                sprite.flipX = true;
+
+            if (V > smallVelocity)
+                sprite.flipX = false;
         }
 
-        private void Jump()
+        private void PrepareJump()
         {
-            if (collidingGround.Count > 0)
+            if (!duringJump)
             {
                 duringJump = true;
-                lastGroundTime = Time.time;
-                rigidbody.AddForce(new Vector2(0, jumpForce));
+                animator.SetBool("Up", true);
+                animator.SetBool("MidAir", true);
             }
         }
 
-        private void StopJump()
+        public void Jump()
         {
-            Debug.Log(transform.position.y);
-            duringJump = false;
+            lastGroundTime = Time.time;
+            rigidbody.AddForce(new Vector2(0, jumpForce));
         }
     }
 }
