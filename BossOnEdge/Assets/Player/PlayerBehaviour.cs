@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ namespace Assets.Player
 {
     public class PlayerBehaviour : MonoBehaviour
     {
+        [SerializeField] private CinemachineVirtualCamera vCamera;
         [SerializeField] private float speed;
         [SerializeField] private float jumpHeight;
         [SerializeField] private float jumpSpeed;
@@ -20,6 +22,14 @@ namespace Assets.Player
         private float lastGroundTime;
         private List<GameObject> collidingGround;
         private bool duringJump;
+
+        public delegate void Event();
+        public static Event Die;
+
+        private void OnEnable()
+        {
+            Die += PlayerBehaviour_Die;
+        }
 
         private void Start()
         {
@@ -64,6 +74,17 @@ namespace Assets.Player
             }
         }
 
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == "Bottom")
+                Die?.Invoke();
+        }
+
+        private void OnDisable()
+        {
+            Die -= PlayerBehaviour_Die;
+        }
+
         private void ProjectileAttack()
         {
             throw new NotImplementedException();
@@ -98,8 +119,12 @@ namespace Assets.Player
 
         public void Jump()
         {
-            lastGroundTime = Time.time;
             rigidbody.AddForce(new Vector2(0, jumpForce));
+        }
+
+        private void PlayerBehaviour_Die()
+        {
+            vCamera.Follow = null;
         }
     }
 }
