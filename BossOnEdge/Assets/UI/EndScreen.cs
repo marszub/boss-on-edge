@@ -19,7 +19,7 @@ public class EndScreen : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void nDisable()
+    private void OnDisable()
     {
         PlayerBehaviour.Die -= OnDead;
     }
