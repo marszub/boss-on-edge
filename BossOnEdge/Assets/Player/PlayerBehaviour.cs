@@ -105,6 +105,11 @@ namespace Assets.Player
 
             if (V > smallVelocity)
                 sprite.flipX = false;
+
+            if (V > smallVelocity || V < -smallVelocity)
+                animator.SetBool("Moving", true);
+            else
+                animator.SetBool("Moving", false);
         }
 
         private void PrepareJump()

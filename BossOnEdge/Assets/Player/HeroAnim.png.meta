@@ -1,40 +1,52 @@
 fileFormatVersion: 2
-guid: 1ce475cb8aeec904ca3e98592924c632
+guid: 192ea29f1f1f4774c986213b48e1fd69
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7606435390379011275
-    second: Hero_Jump_0
+      213: 6235386671344052251
+    second: HeroAnim_0
   - first:
-      213: -9208606853542850182
-    second: Hero_Jump_1
+      213: 8565551923344419800
+    second: HeroAnim_1
   - first:
-      213: 9196056136030960002
-    second: Hero_Jump_2
+      213: 7235974916442616515
+    second: HeroAnim_2
   - first:
-      213: 2406574873832784370
-    second: Hero_Jump_3
+      213: -7303579247360089777
+    second: HeroAnim_3
   - first:
-      213: 5061138720933103808
-    second: Hero_Jump_4
+      213: 2618065535983520919
+    second: HeroAnim_4
   - first:
-      213: -9050413182004678710
-    second: Hero_Jump_5
+      213: -5842227160601901460
+    second: HeroAnim_5
   - first:
-      213: -581154250913229412
-    second: Hero_Jump_6
+      213: -5631096117405483392
+    second: HeroAnim_6
   - first:
-      213: -345104736006067577
-    second: Hero_Jump_7
+      213: -4348799624369274022
+    second: HeroAnim_7
   - first:
-      213: -78026350108867666
-    second: Hero_Jump_8
+      213: 5007664216295903231
+    second: HeroAnim_8
   - first:
-      213: -4031492517443833133
-    second: Hero_Jump_10
+      213: -3895976984245963537
+    second: HeroAnim_9
   - first:
-      213: 5357767137437126666
-    second: Hero_Jump_9
+      213: 8854112033087195326
+    second: HeroAnim_10
+  - first:
+      213: 6499239000882272159
+    second: HeroAnim_11
+  - first:
+      213: 1638331101614471265
+    second: HeroAnim_12
+  - first:
+      213: -4128506124142249847
+    second: HeroAnim_13
+  - first:
+      213: -6774248686392983237
+    second: HeroAnim_14
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -101,7 +113,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,7 +125,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -125,7 +137,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -136,7 +148,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hero_Jump_0
+      name: HeroAnim_0
       rect:
         serializedVersion: 2
         x: 0
@@ -150,14 +162,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 533df752053807690800000000000000
-      internalID: -7606435390379011275
+      spriteID: b18eaae142b888650800000000000000
+      internalID: 6235386671344052251
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_Jump_1
+      name: HeroAnim_1
       rect:
         serializedVersion: 2
         x: 30
@@ -171,14 +183,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a71d9522bd4743080800000000000000
-      internalID: -9208606853542850182
+      spriteID: 8dbab109714fed670800000000000000
+      internalID: 8565551923344419800
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_Jump_2
+      name: HeroAnim_2
       rect:
         serializedVersion: 2
         x: 60
@@ -192,14 +204,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2893daa3554fe9f70800000000000000
-      internalID: 9196056136030960002
+      spriteID: 3c2f23249d85b6460800000000000000
+      internalID: 7235974916442616515
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_Jump_3
+      name: HeroAnim_3
       rect:
         serializedVersion: 2
         x: 90
@@ -213,14 +225,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f10f20e81fd56120800000000000000
-      internalID: 2406574873832784370
+      spriteID: f41ef2cde5974aa90800000000000000
+      internalID: -7303579247360089777
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_Jump_4
+      name: HeroAnim_4
       rect:
         serializedVersion: 2
         x: 0
@@ -234,14 +246,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c841340ad6cc3640800000000000000
-      internalID: 5061138720933103808
+      spriteID: 79c8dfedbbc355420800000000000000
+      internalID: 2618065535983520919
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_Jump_5
+      name: HeroAnim_5
       rect:
         serializedVersion: 2
         x: 30
@@ -255,14 +267,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: acf29108929766280800000000000000
-      internalID: -9050413182004678710
+      spriteID: c664f23d95d3ceea0800000000000000
+      internalID: -5842227160601901460
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_Jump_6
+      name: HeroAnim_6
       rect:
         serializedVersion: 2
         x: 60
@@ -276,14 +288,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c95db92b9435fe7f0800000000000000
-      internalID: -581154250913229412
+      spriteID: 08ef6f18ae35ad1b0800000000000000
+      internalID: -5631096117405483392
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_Jump_7
+      name: HeroAnim_7
       rect:
         serializedVersion: 2
         x: 90
@@ -297,14 +309,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 78aad003211f53bf0800000000000000
-      internalID: -345104736006067577
+      spriteID: a530e1658c5f5a3c0800000000000000
+      internalID: -4348799624369274022
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_Jump_8
+      name: HeroAnim_8
       rect:
         serializedVersion: 2
         x: 0
@@ -318,14 +330,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea304aea27bcaeef0800000000000000
-      internalID: -78026350108867666
+      spriteID: fff80cea21cce7540800000000000000
+      internalID: 5007664216295903231
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_Jump_9
+      name: HeroAnim_9
       rect:
         serializedVersion: 2
         x: 30
@@ -339,8 +351,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a00933823dc9a5a40800000000000000
-      internalID: 5357767137437126666
+      spriteID: fe4fbe81395bee9c0800000000000000
+      internalID: -3895976984245963537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeroAnim_10
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 40
+        width: 30
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb88ca5abff10ea70800000000000000
+      internalID: 8854112033087195326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeroAnim_11
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 40
+        width: 30
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f97d3f5df6fe13a50800000000000000
+      internalID: 6499239000882272159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeroAnim_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 30
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1687438e4758cb610800000000000000
+      internalID: 1638331101614471265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeroAnim_13
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 0
+        width: 30
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 988f979cd8994b6c0800000000000000
+      internalID: -4128506124142249847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeroAnim_14
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 0
+        width: 30
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b31c36316b80df1a0800000000000000
+      internalID: -6774248686392983237
       vertices: []
       indices: 
       edges: []
