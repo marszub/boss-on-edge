@@ -23,6 +23,14 @@ namespace Assets.Player
         private List<GameObject> collidingGround;
         private bool duringJump;
 
+        public delegate void Event();
+        public static Event Die;
+
+        private void OnEnable()
+        {
+            Die += PlayerBehaviour_Die;
+        }
+
         private void Start()
         {
             rigidbody = GetComponent<Rigidbody2D>();
@@ -69,7 +77,12 @@ namespace Assets.Player
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.tag == "Bottom")
-                Die();
+                Die?.Invoke();
+        }
+
+        private void OnDisable()
+        {
+            Die -= PlayerBehaviour_Die;
         }
 
         private void ProjectileAttack()
@@ -109,7 +122,7 @@ namespace Assets.Player
             rigidbody.AddForce(new Vector2(0, jumpForce));
         }
 
-        private void Die()
+        private void PlayerBehaviour_Die()
         {
             vCamera.Follow = null;
         }
