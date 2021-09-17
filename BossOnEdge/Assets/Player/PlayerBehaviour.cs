@@ -15,13 +15,18 @@ namespace Assets.Player
         [SerializeField] private float jumpForce;
         [SerializeField] private float smallVelocity;
 
+        [SerializeField] private GameObject projectilePrefab;
+        [SerializeField] private Transform projectilePosition;
+
         private new Rigidbody2D rigidbody;
         private Animator animator;
-        private SpriteRenderer sprite;
 
         private float lastGroundTime;
         private List<GameObject> collidingGround;
         private bool duringJump;
+        private bool facingRight;
+
+        private bool duringAttack;
 
         public delegate void Event();
         public static Event Die;
@@ -35,14 +40,22 @@ namespace Assets.Player
         {
             rigidbody = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
-            sprite = GetComponent<SpriteRenderer>();
             collidingGround = new List<GameObject>();
+            duringJump = true;
+            duringAttack = false;
+            facingRight = true;
         }
 
         private void Update()
         {
             if (Input.GetButtonDown("Jump"))
                 PrepareJump();
+
+            if (Input.GetButtonDown("Fire1"))
+                SwordAttack();
+
+            if (Input.GetButtonDown("Fire2"))
+                ProjectileAttack();
 
             if (rigidbody.velocity.y < -smallVelocity)
                 animator.SetBool("Up", false);
@@ -87,12 +100,32 @@ namespace Assets.Player
 
         private void ProjectileAttack()
         {
-            throw new NotImplementedException();
+            if (duringAttack)
+                return;
+
+            duringAttack = true;
+            animator.SetTrigger("Projectile");
+        }
+
+        public void FireProjectile()
+        {
+            GameObject projectile = Instantiate(projectilePrefab);
+            projectile.transform.position = projectilePosition.position;
+            projectile.GetComponent<ProjectileBehaviour>().rotation = projectilePosition.rotation.eulerAngles.y;
         }
         
         private void SwordAttack()
         {
-            throw new NotImplementedException();
+            if (duringAttack)
+                return;
+
+            duringAttack = true;
+            animator.SetTrigger("Mele");
+        }
+
+        public void FinishAttack()
+        {
+            duringAttack = false;
         }
 
         private void Move(float direction)
@@ -100,11 +133,17 @@ namespace Assets.Player
             float V = speed * direction;
             rigidbody.velocity = new Vector2(V, rigidbody.velocity.y);
 
-            if (V < -smallVelocity)
-                sprite.flipX = true;
+            if (V < -smallVelocity && facingRight)
+            {
+                facingRight = false;
+                transform.Rotate(new Vector3(0, 180, 0));
+            }
 
-            if (V > smallVelocity)
-                sprite.flipX = false;
+            if (V > smallVelocity && !facingRight)
+            {
+                facingRight = true;
+                transform.Rotate(new Vector3(0, -180, 0));
+            }
 
             if (V > smallVelocity || V < -smallVelocity)
                 animator.SetBool("Moving", true);
