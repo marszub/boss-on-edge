@@ -10,8 +10,7 @@ namespace Assets.Player
     {
         [SerializeField] private CinemachineVirtualCamera vCamera;
         [SerializeField] private float speed;
-        [SerializeField] private float jumpHeight;
-        [SerializeField] private float jumpSpeed;
+        [SerializeField] private float acceleration;
         [SerializeField] private float jumpForce;
         [SerializeField] private float smallVelocity;
 
@@ -44,6 +43,11 @@ namespace Assets.Player
             duringJump = true;
             duringAttack = false;
             facingRight = true;
+        }
+
+        private void FixedUpdate()
+        {
+            
         }
 
         private void Update()
@@ -87,10 +91,16 @@ namespace Assets.Player
             }
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void OnTriggerEnter2D(Collider2D collider)
         {
-            if (collision.gameObject.tag == "Bottom")
+            if (collider.gameObject.tag == "Bottom")
                 Die?.Invoke();
+
+            if(collider.gameObject.tag == "BossAttack")
+            {
+                Vector2 forceVector = (transform.position - collider.transform.position);
+                rigidbody.AddForce(forceVector.normalized * 10000);
+            }
         }
 
         private void OnDisable()
@@ -130,7 +140,13 @@ namespace Assets.Player
 
         private void Move(float direction)
         {
+            if(rigidbody.velocity.x < speed)
+            {
+                rigidbody.AddForce(Vector2.up * acceleration);
+            }
+
             float V = speed * direction;
+
             rigidbody.velocity = new Vector2(V, rigidbody.velocity.y);
 
             if (V < -smallVelocity && facingRight)
