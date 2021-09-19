@@ -92,6 +92,12 @@ TextureImporter:
   - first:
       213: 1837679826054501539
     second: HeroAnim_29
+  - first:
+      213: -5877762041617991735
+    second: HeroAnim_30
+  - first:
+      213: -5207274078594959559
+    second: HeroAnim_31
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -818,6 +824,48 @@ TextureImporter:
       bones: []
       spriteID: 3a451eab010c08910800000000000000
       internalID: 1837679826054501539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeroAnim_30
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 0
+        width: 30
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c7b51b909efd6ea0800000000000000
+      internalID: -5877762041617991735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeroAnim_31
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 0
+        width: 30
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9377f3990db0cb7b0800000000000000
+      internalID: -5207274078594959559
       vertices: []
       indices: 
       edges: []
