@@ -10,7 +10,8 @@ namespace Assets.Player
     {
         [SerializeField] private CinemachineVirtualCamera vCamera;
         [SerializeField] private float speed;
-        [SerializeField] private float acceleration;
+        [SerializeField] private float jumpHeight;
+        [SerializeField] private float jumpSpeed;
         [SerializeField] private float jumpForce;
         [SerializeField] private float smallVelocity;
 
@@ -20,10 +21,10 @@ namespace Assets.Player
         private new Rigidbody2D rigidbody;
         private Animator animator;
 
-        private float lastGroundTime;
         private List<GameObject> collidingGround;
         private bool duringJump;
         private bool facingRight;
+        private bool duringKnockback;
 
         private bool duringAttack;
 
@@ -43,15 +44,23 @@ namespace Assets.Player
             duringJump = true;
             duringAttack = false;
             facingRight = true;
+            duringKnockback = false;
         }
 
+<<<<<<< Updated upstream
+=======
         private void FixedUpdate()
         {
-            
+            if (duringKnockback && rigidbody.velocity.x <= smallVelocity && rigidbody.velocity.x >= -smallVelocity)
+                EndKnockback();
         }
 
+>>>>>>> Stashed changes
         private void Update()
         {
+            if (duringKnockback)
+                return;
+
             if (Input.GetButtonDown("Jump"))
                 PrepareJump();
 
@@ -91,16 +100,19 @@ namespace Assets.Player
             }
         }
 
-        private void OnTriggerEnter2D(Collider2D collider)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collider.gameObject.tag == "Bottom")
+            if (collision.gameObject.tag == "Bottom")
                 Die?.Invoke();
+<<<<<<< Updated upstream
+=======
 
-            if(collider.gameObject.tag == "BossAttack")
+/*            if(collider.gameObject.tag == "BossAttack")
             {
                 Vector2 forceVector = (transform.position - collider.transform.position);
                 rigidbody.AddForce(forceVector.normalized * 10000);
-            }
+            }*/
+>>>>>>> Stashed changes
         }
 
         private void OnDisable()
@@ -140,31 +152,30 @@ namespace Assets.Player
 
         private void Move(float direction)
         {
-            if(rigidbody.velocity.x < speed)
-            {
-                rigidbody.AddForce(Vector2.up * acceleration);
-            }
-
             float V = speed * direction;
-
             rigidbody.velocity = new Vector2(V, rigidbody.velocity.y);
 
-            if (V < -smallVelocity && facingRight)
-            {
-                facingRight = false;
-                transform.Rotate(new Vector3(0, 180, 0));
-            }
-
-            if (V > smallVelocity && !facingRight)
-            {
-                facingRight = true;
-                transform.Rotate(new Vector3(0, -180, 0));
-            }
+            UpdateRotation(V);
 
             if (V > smallVelocity || V < -smallVelocity)
                 animator.SetBool("Moving", true);
             else
                 animator.SetBool("Moving", false);
+        }
+
+        private void UpdateRotation(float xVelocity)
+        {
+            if (xVelocity < -smallVelocity && facingRight)
+            {
+                facingRight = false;
+                transform.Rotate(new Vector3(0, 180, 0));
+            }
+
+            if (xVelocity > smallVelocity && !facingRight)
+            {
+                facingRight = true;
+                transform.Rotate(new Vector3(0, -180, 0));
+            }
         }
 
         private void PrepareJump()
@@ -180,6 +191,21 @@ namespace Assets.Player
         public void Jump()
         {
             rigidbody.AddForce(new Vector2(0, jumpForce));
+        }
+
+        public void Knockback(Vector2 velocity)
+        {
+            rigidbody.velocity = velocity;
+            animator.SetBool("Knockback", true);
+            duringKnockback = true;
+
+            UpdateRotation(velocity.x);
+        }
+
+        private void EndKnockback()
+        {
+            animator.SetBool("Knockback", false);
+            duringKnockback = false;
         }
 
         private void PlayerBehaviour_Die()

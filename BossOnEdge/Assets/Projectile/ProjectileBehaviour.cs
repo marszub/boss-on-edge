@@ -8,6 +8,7 @@ public class ProjectileBehaviour : MonoBehaviour
 
     [SerializeField] private float speed;
     [SerializeField] private float lifeTime;
+    [SerializeField] private float power;
 
     private float deadTime;
 
@@ -32,7 +33,9 @@ public class ProjectileBehaviour : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Ground")
-            Disappear();
+        if (collision.gameObject.tag == "Boss")
+            collision.GetComponent<GargulBehaviour>().Knockback(power);
+
+        Disappear();
     }
 }
