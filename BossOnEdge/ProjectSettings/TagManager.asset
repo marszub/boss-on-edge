@@ -5,13 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - Bottom
   - PlayerAttack
-<<<<<<< Updated upstream
-=======
-  - BossAttack
   - Boss
->>>>>>> Stashed changes
+  - BossAttack
+  - Border
   layers:
   - Default
   - TransparentFX
@@ -19,6 +16,9 @@ TagManager:
   - 
   - Water
   - UI
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -42,10 +42,13 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 4185218735
+    locked: 0
+  - name: Map
+    uniqueID: 1628421397
     locked: 0

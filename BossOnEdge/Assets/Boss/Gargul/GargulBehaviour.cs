@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GargulBehaviour : MonoBehaviour
 {
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform projectilePosition;
+    [SerializeField] private float projectileVelocity;
     [SerializeField] private float timeBetweenBlinks;
     [SerializeField] private float timeBetweenAttacks;
     [SerializeField] private float knockbackDelta;
@@ -18,6 +21,12 @@ public class GargulBehaviour : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         lastBlinkTime = Time.time;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Border")
+            Win();
     }
 
     private void Update()
@@ -38,7 +47,12 @@ public class GargulBehaviour : MonoBehaviour
 
     public void FireProjectile()
     {
-        Debug.LogWarning("Not implemented");
+        GameObject projectile = Instantiate(projectilePrefab);
+        projectile.transform.position = projectilePosition.position;
+        Vector2 lookVector = GameObject.FindGameObjectWithTag("Player").transform.position - projectile.transform.position;
+        projectile.transform.Rotate(new Vector3(0, 0, Vector2.SignedAngle(Vector2.left, lookVector)));
+
+        projectile.GetComponent<Rigidbody2D>().velocity = lookVector * projectileVelocity;
     }
 
     public void MeleAttack()
@@ -61,5 +75,10 @@ public class GargulBehaviour : MonoBehaviour
     public void Knockback(float power)
     {
         transform.position = transform.position + Vector3.right * knockbackDelta * power;
+    }
+
+    private void Win()
+    {
+
     }
 }

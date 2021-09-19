@@ -47,15 +47,12 @@ namespace Assets.Player
             duringKnockback = false;
         }
 
-<<<<<<< Updated upstream
-=======
         private void FixedUpdate()
         {
             if (duringKnockback && rigidbody.velocity.x <= smallVelocity && rigidbody.velocity.x >= -smallVelocity)
                 EndKnockback();
         }
 
->>>>>>> Stashed changes
         private void Update()
         {
             if (duringKnockback)
@@ -102,17 +99,8 @@ namespace Assets.Player
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.tag == "Bottom")
+            if (collision.gameObject.tag == "Border")
                 Die?.Invoke();
-<<<<<<< Updated upstream
-=======
-
-/*            if(collider.gameObject.tag == "BossAttack")
-            {
-                Vector2 forceVector = (transform.position - collider.transform.position);
-                rigidbody.AddForce(forceVector.normalized * 10000);
-            }*/
->>>>>>> Stashed changes
         }
 
         private void OnDisable()
