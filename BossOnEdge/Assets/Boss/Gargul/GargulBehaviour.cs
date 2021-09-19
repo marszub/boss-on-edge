@@ -4,18 +4,35 @@ using UnityEngine;
 
 public class GargulBehaviour : MonoBehaviour
 {
+    [SerializeField] private float timeBetweenBlinks;
+    [SerializeField] private float timeBetweenAttacks;
+    [SerializeField] private float knockbackDelta;
+
     private Animator animator;
     private bool duringAttack;
+
+    private float lastBlinkTime;
+    private float lastAttackTime;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        duringAttack = false;
+        lastBlinkTime = Time.time;
+    }
+
+    private void Update()
+    {
+        if (lastBlinkTime + timeBetweenBlinks < Time.time)
+            Blink();
+
+        if (lastAttackTime + timeBetweenAttacks < Time.time)
+            ProjectileAttack();
     }
 
     public void ProjectileAttack()
     {
         animator.SetTrigger("Projectile");
+        lastAttackTime = Time.time;
         duringAttack = true;
     }
 
@@ -33,5 +50,16 @@ public class GargulBehaviour : MonoBehaviour
     public void EndAttack()
     {
         duringAttack = false;
+    }
+
+    private void Blink()
+    {
+        animator.SetTrigger("Blink");
+        lastBlinkTime = Time.time;
+    }
+
+    public void Knockback(float power)
+    {
+        transform.position = transform.position + Vector3.right * knockbackDelta * power;
     }
 }
