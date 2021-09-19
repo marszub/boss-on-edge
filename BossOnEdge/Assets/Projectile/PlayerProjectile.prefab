@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4012634849295733565}
   - component: {fileID: 6772048875545350292}
   - component: {fileID: 6877063064426490183}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PlayerProjectile
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
@@ -157,3 +157,4 @@ MonoBehaviour:
   rotation: 0
   speed: 25
   lifeTime: 5
+  power: 0.3
