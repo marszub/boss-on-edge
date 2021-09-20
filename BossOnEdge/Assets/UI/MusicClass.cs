@@ -1,8 +1,15 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MusicClass : MonoBehaviour
 {
     [SerializeField] private AudioSource _audioSource;
+
+    private void Start()
+    {
+        SceneManager.LoadScene("Menu", LoadSceneMode.Additive);
+    }
+
     private void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
