@@ -1,0 +1,4 @@
+filename: Fireball.wav
+source: https://freesound.org/people/JoelAudio/sounds/77691/
+licence: https://creativecommons.org/licenses/by/3.0/legalcode
+Beginning of the sound has been cut.

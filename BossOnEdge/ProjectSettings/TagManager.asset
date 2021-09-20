@@ -9,6 +9,7 @@ TagManager:
   - Boss
   - BossAttack
   - Border
+  - Music
   layers:
   - Default
   - TransparentFX

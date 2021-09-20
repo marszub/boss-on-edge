@@ -9,6 +9,8 @@ public class EndScreen : MonoBehaviour
 {
     private Animator animator;
 
+    private bool dead;
+
     private void OnEnable()
     {
         PlayerBehaviour.Die += OnDead;
@@ -16,7 +18,14 @@ public class EndScreen : MonoBehaviour
 
     void Start()
     {
+        dead = false;
         animator = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        if (dead && Input.GetButtonDown("Jump"))
+            TryAgain();
     }
 
     private void OnDisable()
@@ -26,7 +35,9 @@ public class EndScreen : MonoBehaviour
 
     private void OnDead()
     {
+        dead = true;
         animator.SetTrigger("FadeIn");
+
     }
 
     public void TryAgain()

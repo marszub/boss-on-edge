@@ -12,7 +12,7 @@ public class EnemyAttack : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             Vector2 directionVector = (collision.transform.position - transform.position);
-            collision.GetComponent<PlayerBehaviour>().Knockback(directionVector * power);
+            collision.GetComponent<PlayerBehaviour>().Knockback(directionVector.normalized * power);
         }
     }
 }

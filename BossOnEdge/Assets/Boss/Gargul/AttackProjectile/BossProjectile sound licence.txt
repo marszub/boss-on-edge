@@ -1,0 +1,4 @@
+filename: BossProjectile.flac
+source: https://freesound.org/people/unfa/sounds/193429/
+licence: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+No changes were made

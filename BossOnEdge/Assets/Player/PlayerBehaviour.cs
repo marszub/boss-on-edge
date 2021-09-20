@@ -15,16 +15,23 @@ namespace Assets.Player
         [SerializeField] private float jumpForce;
         [SerializeField] private float smallVelocity;
 
+        [SerializeField] private AudioSource meleAttack;
         [SerializeField] private GameObject projectilePrefab;
         [SerializeField] private Transform projectilePosition;
 
+        [SerializeField] private AudioClip jumpSound;
+        [SerializeField] private AudioClip painSound;
+        [SerializeField] private AudioClip fireballSound;
+
         private new Rigidbody2D rigidbody;
         private Animator animator;
+        private AudioSource audioSource;
 
         private List<GameObject> collidingGround;
         private bool duringJump;
         private bool facingRight;
-        private bool duringKnockback;
+        private bool immobilized;
+        private bool won;
 
         private bool duringAttack;
 
@@ -34,28 +41,31 @@ namespace Assets.Player
         private void OnEnable()
         {
             Die += PlayerBehaviour_Die;
+            GargulBehaviour.Win += Win;
         }
 
         private void Start()
         {
             rigidbody = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
+            audioSource = GetComponent<AudioSource>();
             collidingGround = new List<GameObject>();
             duringJump = true;
             duringAttack = false;
             facingRight = true;
-            duringKnockback = false;
+            immobilized = false;
+            won = false;
         }
 
         private void FixedUpdate()
         {
-            if (duringKnockback && rigidbody.velocity.x <= smallVelocity && rigidbody.velocity.x >= -smallVelocity)
+            if (immobilized && rigidbody.velocity.x <= smallVelocity && rigidbody.velocity.x >= -smallVelocity)
                 EndKnockback();
         }
 
         private void Update()
         {
-            if (duringKnockback)
+            if (immobilized || won)
                 return;
 
             if (Input.GetButtonDown("Jump"))
@@ -105,7 +115,13 @@ namespace Assets.Player
 
         private void OnDisable()
         {
+            GargulBehaviour.Win -= Win;
             Die -= PlayerBehaviour_Die;
+        }
+
+        private void Win()
+        {
+            won = true;
         }
 
         private void ProjectileAttack()
@@ -115,6 +131,8 @@ namespace Assets.Player
 
             duringAttack = true;
             animator.SetTrigger("Projectile");
+            audioSource.clip = fireballSound;
+            audioSource.Play();
         }
 
         public void FireProjectile()
@@ -131,6 +149,11 @@ namespace Assets.Player
 
             duringAttack = true;
             animator.SetTrigger("Mele");
+        }
+
+        private void SwordHit()
+        {
+            meleAttack.Play();
         }
 
         public void FinishAttack()
@@ -178,6 +201,8 @@ namespace Assets.Player
 
         public void Jump()
         {
+            audioSource.clip = jumpSound;
+            audioSource.Play();
             rigidbody.AddForce(new Vector2(0, jumpForce));
         }
 
@@ -185,7 +210,9 @@ namespace Assets.Player
         {
             rigidbody.velocity = velocity;
             animator.SetBool("Knockback", true);
-            duringKnockback = true;
+            immobilized = true;
+            audioSource.clip = painSound;
+            audioSource.Play();
 
             UpdateRotation(velocity.x);
         }
@@ -193,7 +220,7 @@ namespace Assets.Player
         private void EndKnockback()
         {
             animator.SetBool("Knockback", false);
-            duringKnockback = false;
+            immobilized = false;
         }
 
         private void PlayerBehaviour_Die()
