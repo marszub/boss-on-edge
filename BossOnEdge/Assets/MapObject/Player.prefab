@@ -310,7 +310,7 @@ MonoBehaviour:
   jumpHeight: 5
   jumpSpeed: 16
   jumpForce: 2000
-  smallVelocity: 0.001
+  smallVelocity: 0.1
   meleAttack: {fileID: 1833079403526619022}
   projectilePrefab: {fileID: 5712410741635374753, guid: 5f08df46189dc0149b5eff548844066e, type: 3}
   projectilePosition: {fileID: 153139647021762281}

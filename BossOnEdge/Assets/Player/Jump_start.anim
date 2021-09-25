@@ -21,9 +21,9 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 8565551923344419800, guid: 192ea29f1f1f4774c986213b48e1fd69, type: 3}
-    - time: 0.083333336
-      value: {fileID: 7235974916442616515, guid: 192ea29f1f1f4774c986213b48e1fd69, type: 3}
     - time: 0.16666667
+      value: {fileID: 7235974916442616515, guid: 192ea29f1f1f4774c986213b48e1fd69, type: 3}
+    - time: 0.33333334
       value: {fileID: -7303579247360089777, guid: 192ea29f1f1f4774c986213b48e1fd69, type: 3}
     attribute: m_Sprite
     path: 
@@ -52,7 +52,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.18333334
+    m_StopTime: 0.35000002
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -71,11 +71,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0.083333336
-    functionName: Jump
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

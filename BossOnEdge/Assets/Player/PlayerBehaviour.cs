@@ -121,6 +121,7 @@ namespace Assets.Player
 
         private void Win()
         {
+            rigidbody.simulated = false;
             won = true;
         }
 
@@ -196,14 +197,17 @@ namespace Assets.Player
                 duringJump = true;
                 animator.SetBool("Up", true);
                 animator.SetBool("MidAir", true);
+                StartCoroutine("Jump");
             }
         }
 
-        public void Jump()
+        private IEnumerator Jump()
         {
+            yield return new WaitForSeconds(.1f);
             audioSource.clip = jumpSound;
             audioSource.Play();
             rigidbody.AddForce(new Vector2(0, jumpForce));
+            yield break;
         }
 
         public void Knockback(Vector2 velocity)
