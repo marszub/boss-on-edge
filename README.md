@@ -1,8 +1,7 @@
-![Banner image](./BannerImage.png "Banner")
+![Banner image](./media/BannerImage.png "Banner")
 
-<h1 style="font-family: aguafina; color: #7A1A25; font-size:100px; text-align:center"> Hunt the Gargul </h1>
-
-[<img alt="Controls" title="Controls" width="200px" src="./media/play-button.png"/>](givrox7.itch.io/hunt-gargul "Play") An entry to the Vim Jam 2021
+# Hunt the Gargul [<img alt="Play" title="Play" width="24px" style="filter: invert(25%) sepia(73%) saturate(4004%) hue-rotate(349deg) brightness(72%) contrast(93%)" src="./media/play-button.png"/>](https://givrox7.itch.io/hunt-gargul "Play") 
+An entry to the Vim Jam 2021
 
 ## Goal
 
