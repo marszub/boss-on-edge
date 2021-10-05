@@ -1,11 +1,3 @@
-<style>
-@font-face{
-    font-family: aguafina;
-    src: url('./BossOnEdge/Assets/Font/AguafinaScript-Regular.ttf') format('truetype');
-}
-</style>
-
-
 ![Banner image](./BannerImage.png "Banner")
 
 <h1 style="font-family: aguafina; color: #7A1A25; font-size:100px; text-align:center"> Hunt the Gargul </h1>
